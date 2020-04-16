@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# virtualenv
+ml/
+
+# local history
+.history/
+
+# vscode config
+.vscode/
+
+*.png
