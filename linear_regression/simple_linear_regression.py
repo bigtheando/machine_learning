@@ -10,6 +10,8 @@ if __name__ == "__main__":
                            n_features=1,
                            noise=10.0,
                            bias=1.0)
+    x = (x - x.mean()) / x.std()
+    y = (y - y.mean()) / y.std()
     x = x[:, 0]
     x_sum = x.sum()
     x_square_sum = np.power(x, 2).sum()

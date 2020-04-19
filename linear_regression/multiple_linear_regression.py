@@ -11,6 +11,8 @@ if __name__ == "__main__":
                            n_features=2,
                            noise=10.0,
                            bias=1.0)
+    X = (X - X.mean(axis=0)) / X.std(axis=0)
+    y = (y - y.mean(axis=0)) / y.std(axis=0)
     y = y.reshape(X_len, 1)
     A = X.T.dot(X)
     w = np.linalg.inv(A).dot(X.T).dot(y)
