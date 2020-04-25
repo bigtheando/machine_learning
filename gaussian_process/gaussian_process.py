@@ -18,12 +18,16 @@ if __name__ == "__main__":
     Y = (Y - Y.mean()) / Y.std()
     Y = Y.reshape(n_samples, 1)
     # 線形カーネル
+    # TODO: 線形カーネル以外も実装する
     XXT = X.dot(X.T)
+    # 精度行列
     XXT_inv = np.linalg.inv(XXT)
 
-    X_test = np.random.rand(2) * 3
-    X_test = (X_test - X_mean) / X_std
+    # 推論用入力データ
+    X_test = np.random.rand(2)
+    # 入力データと学習データの共分散
     k_aster = X_test.dot(X.T)
+    # 入力データと入力データの共分散
     k_asteraster = X_test.dot(X_test)
     # P(Y)がしたがうガウス分布の平均
     Y_mean = k_aster.dot(XXT_inv).dot(Y)
@@ -37,6 +41,8 @@ if __name__ == "__main__":
     """
     fig = plt.figure()
     ax = Axes3D(fig)
+    # 青点が学習データ
     ax.scatter(X[:, 0], X[:, 1], Y[:, 0])
+    # 橙点が推論結果
     ax.scatter(X_test[0], X_test[1], result)
     plt.show()
